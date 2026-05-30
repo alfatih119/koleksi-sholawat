@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Sholawat Hadroh</title>
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* STYLING NAVBAR */
+        .navbar {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Navigasi Panah Kiri */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-arrow {
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-arrow:hover {
+            background-color: #00ff99;
+            color: #1a1a1a;
+        }
+
+        /* Navigasi Tengah (Identitas & Menu Tentang Pembuat) */
+        .nav-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2px;
+        }
+
+        .brand-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: #00ff99;
+            font-weight: bold;
+        }
+
+        /* Tombol Tentang Pembuat di Navbar */
+        .btn-about {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-about:hover {
+            color: #00ff99;
+        }
+
+        /* Navigasi Kanan (Tombol Login) */
+        .btn-login {
+            background-color: transparent;
+            color: #00ff99;
+            border: 2px solid #00ff99;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #00ff99;
+            color: #1a1a1a;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+        }
+
+        /* MAIN CONTENT HOLDER */
+        .content-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 40px 20px 60px 20px; /* Jarak bawah sedikit diperlebar karena tidak ada footer */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        /* CONTAINER DENGAN CSS GRID */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* STYLING KOTAK BAYANGAN */
+        .kotak-selawat {
+            text-decoration: none;
+            color: #333;
+            background-color: #ffffff;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            border-bottom: 4px solid #00ff99;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .kotak-selawat:hover {
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            background-color: #222;
+            color: #00ff99;
+        }
+
+        .nomer {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        /* Responsif untuk HP Kecil */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+            .brand-title {
+                font-size: 0.8rem;
+            }
+            .btn-about {
+                font-size: 0.7rem;
+            }
+            .btn-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            .btn-login {
+                padding: 4px 12px;
+                font-size: 0.8rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <!-- Bagian Kiri: Logopanah Kembali & Kedepan -->
+        <div class="nav-left">
+            <button onclick="history.back()" class="btn-arrow" title="Kembali">&#10094;</button>
+            <button onclick="history.forward()" class="btn-arrow" title="Maju">&#10095;</button>
+        </div>
+
+        <!-- Bagian Tengah: Judul Pembuat & Menu Tentang Pembuat -->
+        <div class="nav-center">
+            <div class="brand-title">
+                Koleksi shalawat hadroh oleh <span>Al-fatih</span>
+            </div>
+            <!-- Ganti '#' dengan link halaman bio-mu jika ada, contoh: href="about.html" -->
+            <a href="tentang.html" class="btn-about">Tentang Pembuat</a>
+        </div>
+
+        <!-- Bagian Kanan: Tombol Login -->
+        <a href="login.html" class="btn-login">Login</a>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- KOMPONEN PROFIL AL-FATIH (TARUH DI SINI)  -->
+    <!-- ========================================== -->
+    <div class="main-profile-container">
+        <!-- Foto Profil Bulat -->
+        <div class="main-avatar-box">
+            <img src="foto.jpg" alt="Al-Fatih" class="main-avatar-img">
+        </div>
+        
+        <!-- Nama Utama -->
+        <h1 class="main-profile-name">Al-Fatih</h1>
+        
+        <!-- Subtitle Role/Keahlian -->
+        <p class="main-profile-role">Web Development & Content Creator Programming</p>
+        
+        <!-- Catatan Kecil Keterangan Pembuatan Website -->
+        <p class="main-profile-note">Web ini dibuat dengan coding HTML</p>
+    </div>
+
+    <!-- STYLING KHUSUS PROFIL UTAMA (Bisa menyatu di sini) -->
+    <style>
+        .main-profile-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto 20px auto; /* Jarak atas-bawah dan otomatis di tengah */
+            padding: 0 20px;
+            text-align: center; /* Membuat semua teks & konten ke tengah */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-avatar-box {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #00ff99; /* Bingkai hijau neon khas project-mu */
+            padding: 4px;
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 255, 153, 0.2);
+        }
+
+        .main-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .main-profile-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-profile-role {
+            font-size: 1rem;
+            color: #00ff99; /* Warna hijau neon teks medium */
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-profile-note {
+            font-size: 0.8rem;
+            color: #888888; /* Warna abu-abu redup untuk teks kecil */
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Ringkas untuk HP */
+        @media (max-width: 480px) {
+            .main-profile-container {
+                margin: 25px auto 10px auto;
+            }
+            .main-avatar-box {
+                width: 100px;
+                height: 100px;
+            }
+            .main-profile-name {
+                font-size: 1.6rem;
+            }
+            .main-profile-role {
+                font-size: 0.9rem;
+            }
+            .main-profile-note {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+    <!-- ========================================== -->
+    <!-- AKHIR KOMPONEN PROFIL                      -->
+    <!-- ========================================== -->
+
+    <!-- KONTEN UTAMA -->
+    <div class="content-container">
+        
+        <h1>Koleksi Sholawat Hadroh</h1>
+
+        <!-- GRID DAFTAR SHOLAWAT -->
+        <div class="grid-container">
+            <a href="mahalulqiyam.html" class="kotak-selawat">
+                <span class="nomer">01</span><span>Mahalul Qiyam</span>
+            </a>
+            <a href="mughrom.html" class="kotak-selawat">
+                <span class="nomer">02</span><span>Mughrom</span>
+            </a>
+            <a href="waktusahar.html" class="kotak-selawat">
+                <span class="nomer">03</span><span>Waktu Sahar</span>
+            </a>
+            <a href="isyfalana.html" class="kotak-selawat">
+                <span class="nomer">04</span><span>Isyfalana</span>
+            </a>
+            <a href="qomarun.html" class="kotak-selawat">
+                <span class="nomer">05</span><span>Qomarun</span>
+            </a>
+            <a href="sepohonkayu.html" class="kotak-selawat">
+                <span class="nomer">06</span><span>Sepohon Kayu</span>
+            </a>
+            <a href="busyrolana.html" class="kotak-selawat">
+                <span class="nomer">07</span><span>Busyrolana</span>
+            </a>
+            <a href="birosulillah.html" class="kotak-selawat">
+                <span class="nomer">08</span><span>Birosulillah</span>
+            </a>
+            <a href="Ya hanana.html" class="kotak-selawat">
+                <span class="nomer">09</span><span>Ya Hanana</span>
+            </a>
+            <a href="Ya ayyuhan nabi.html" class="kotak-selawat">
+                <span class="nomer">10</span><span>Ya ayyuhan nabi</span>
+            </a>
+            <a href="sholawat jibril.html" class="kotak-selawat">
+                <span class="nomer">11</span><span>Sholawat Jibril</span>
+            </a>
+            <a href="huwannur.html" class="kotak-selawat">
+                <span class="nomer">12</span><span>Huwannur</span>
+            </a>
+            <a href="addinulana.html" class="kotak-selawat">
+                <span class="nomer">13</span><span>Addinu Lana</span>
+            </a>
+            <a href="nurul mustofa.html" class="kotak-selawat">
+                <span class="nomer">14</span><span>Nurul Mustofa</span>
+            </a>
+            <a href="thibbilqulub.html" class="kotak-selawat">
+                <span class="nomer">15</span><span>Thibbil qulub</span>
+            </a>
+            <a href="assalamualaika.html" class="kotak-selawat">
+                <span class="nomer">16</span><span>Assalamualaika</span>
+            </a>
+            <a href="alamate.html" class="kotak-selawat">
+                <span class="nomer">17</span><span>Alamate Anak sholeh</span>
+            </a>
+            <a href="burdah.html" class="kotak-selawat">
+                <span class="nomer">18</span><span>Burdah</span>
+            </a>
+            <a href="ashiqal.html" class="kotak-selawat">
+                <span class="nomer">19</span><span>Ya ashiqal mustofa</span>
+            </a>
+            <a href="robbi.html" class="kotak-selawat">
+                <span class="nomer">20</span><span>Robbi kholaq</span>
+            </a>
+            <a href="thola.html" class="kotak-selawat">
+                <span class="nomer">21</span><span>Thola`al badru</span>
+            </a>
+        </div>
+        <hr>
+
+    </div>
+
+</body>
+</html>

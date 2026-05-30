@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lirik Mughrom</title>
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* STYLING NAVBAR */
+        .navbar {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Navigasi Panah Kiri */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-arrow {
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-arrow:hover {
+            background-color: #00ff99;
+            color: #1a1a1a;
+        }
+
+        /* Navigasi Tengah (Identitas Al-Fatih) */
+        .nav-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2px;
+        }
+
+        .brand-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: #00ff99;
+            font-weight: bold;
+        }
+
+        /* Tombol Tentang Pembuat */
+        .btn-about {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-about:hover {
+            color: #00ff99;
+        }
+
+        /* Navigasi Kanan (Tombol Login) */
+        .btn-login {
+            background-color: transparent;
+            color: #00ff99;
+            border: 2px solid #00ff99;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #00ff99;
+            color: #1a1a1a;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+        }
+
+        /* STYLING AREA KONTEN LIRIK */
+        .content-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px 20px 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 5px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .sub-title {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Wadah Kotak Lirik */
+        .lirik-box {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #00ff99;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .lirik-box b {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .lirik-box i {
+            font-size: 1rem;
+            color: #555;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .lirik-box hr {
+            width: 40%;
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px auto;
+        }
+
+        /* Responsif HP */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+            .brand-title {
+                font-size: 0.8rem;
+            }
+            .btn-about {
+                font-size: 0.7rem;
+            }
+            .btn-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            .btn-login {
+                padding: 4px 12px;
+                font-size: 0.8rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .lirik-box b {
+                font-size: 1.15rem;
+            }
+            .lirik-box i {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <button onclick="history.back()" class="btn-arrow" title="Kembali">&#10094;</button>
+            <button onclick="history.forward()" class="btn-arrow" title="Maju">&#10095;</button>
+        </div>
+
+        <div class="nav-center">
+            <div class="brand-title">
+                Koleksi sholawat hadroh oleh <span>Al-Fatih</span>
+            </div>
+            <a href="index.html#tentang" class="btn-about">Tentang Pembuat</a>
+        </div>
+
+        <a href="login.html" class="btn-login">Login</a>
+    </nav>
+
+    <!-- KONTEN UTAMA LIRIK -->
+    <div class="content-container">
+        
+        <h1>Mughrom</h1>
+        <div class="sub-title">Mughromun Qolbi Bi Hubbika</div>
+
+        <div class="lirik-box">
+
+            <!-- REFFRAIN -->
+            <b>مُغْرَمْ… قَلْبِيْ بِحُبَّكْ مُغْرَمْ</b><br>
+            <i>Mughrom.. Qolbi Bihubbika Mughrom</i><br><br>
+
+            <b>يَا مُصْطَفَانَا الْمُكَرَّمْ</b><br>
+            <i>Ya Musthofanal Mukarrom</i><br><br>
+
+            <b>يَا رَسُوْلَ الله</b><br>
+            <i>Ya Rosulalloh</i><br>
+
+            <hr>
+
+            <b>مُغْرَمْ… قَلْبِيْ بِحُبَّكْ مُغْرَمْ</b><br>
+            <i>Mughrom.. Qolbi Bihubbika Mughrom</i><br><br>
+
+            <b>يَا مُصْطَفَانَا الْمُكَرَّمْ</b><br>
+            <i>Ya Musthofanal Mukarrom</i><br><br>
+
+            <b>يَا رَسُوْلَ الله</b><br>
+            <i>Ya Rosulalloh</i><br>
+
+            <hr>
+
+            <!-- BAIT 1 -->
+            <b>جَمَالَك مَافِي اثْنَيْنْ</b><br>
+            <i>Jamalak Ma Fits-Nain</i><br><br>
+
+            <b>مَا شَافِتْ مِثْلُهْ عَيْنْ</b><br>
+            <i>Masyafit Mitsluh ‘Ain</i><br><br>
+
+            <b>أَسَرْ فُؤَادِيْ</b><br>
+            <i>Asar Fuadi</i><br><br>
+
+            <b>وِ زَادْ وِدَادِيْ</b><br>
+            <i>Wizad Widadi</i><br><br>
+
+            <b>بَدْرِ الدُّجَا يَازيْنْ</b><br>
+            <i>Badrid-Duja Ya Zain</i><br>
+
+            <hr>
+
+            <!-- BAIT 2 -->
+            <b>أَبْيَضْ حُلْوِ الْخَدِّينْ</b><br>
+            <i>Abyadh Hulwil-Khoddin</i><br><br>
+
+            <b>يَا وَاسِعَ الْعَيْنَينْ</b><br>
+            <i>Ya Wasi’al-‘Ainain</i><br><br>
+
+            <b>أَحْلَى ابْتِسَامَهْ</b><br>
+            <i>Ahlab-Tisamah</i><br><br>
+
+            <b>بِأَبْهَى عَلَامَةْ</b><br>
+            <i>Biabha ‘Alamah</i><br><br>
+
+            <b>يَا سَيِّدَ الْكَوْنَينْ</b><br>
+            <i>Ya Sayyidal-Kaunain</i><br>
+
+            <hr>
+
+            <!-- BAIT 3 -->
+            <b>إِمْتَى حَبِيْبِيْ أَرَاكْ</b><br>
+            <i>Imta Habibi Arok</i><br><br>
+
+            <b>وَالْقَاكْ وَافْرَحْ بِنَدَاكْ ؟</b><br>
+            <i>Wal-Qok Wafroh Binadak</i><br>
+
+            <hr>
+
+            <!-- BAIT 4 -->
+            <b>طَهَ جُدْ بِنَظْرَةْ إِلَيَّ</b><br>
+            <i>Thoha Jud Binadroh Ilayya</i><br><br>
+
+            <b>طَهَ يَا عَظِيْمَ الْجَاهْ</b><br>
+            <i>Thoha Ya ‘Adhimal-Jah</i><br><br>
+
+            <b>طَهَ جُدْ بِنَظْرَةْ إِلَيَّ</b><br>
+            <i>Thoha Jud Binadroh Ilayya</i><br><br>
+
+            <b>طَهَ يَا عَظِيْمَ الْجَاهْ</b><br>
+            <i>Thoha Ya ‘Adhimal-Jah</i><br>
+
+            <hr>
+
+            <!-- REFFRAIN REPEAT -->
+            <b>مُغْرَمْ… قَلْبِيْ بِحُبَّكْ مُغْرَمْ</b><br>
+            <i>Mughrom.. Qolbi Bihubbika Mughrom</i><br><br>
+
+            <b>يَا مُصْطَفَانَا الْمُكَرَّمْ</b><br>
+            <i>Ya Musthofanal Mukarrom</i><br><br>
+
+            <b>يَا رَسُوْلَ الله</b><br>
+            <i>Ya Rosulalloh</i><br>
+
+            <hr>
+
+            <b>مُغْرَمْ… قَلْبِيْ بِحُبَّكْ مُغْرَمْ</b><br>
+            <i>Mughrom.. Qolbi Bihubbika Mughrom</i><br><br>
+
+            <b>يَا مُصْطَفَانَا الْمُكَرَّمْ</b><br>
+            <i>Ya Musthofanal Mukarrom</i><br><br>
+
+            <b>يَا رَسُوْلَ الله</b><br>
+            <i>Ya Rosulalloh</i><br>
+
+            <hr>
+
+            <!-- BAIT 5 -->
+            <b>قَلْبِيْ يَا حِبِّيْ عَلِيلْ</b><br>
+            <i>Qolbi Ya Hibbi ‘Alil</i><br><br>
+
+            <b>وَ لَيْلِيْ عَلَيَّ طَوِيلْ</b><br>
+            <i>Wa Laili Alayya Thowil</i><br><br>
+
+            <b>إِسْمَكْ يَا غَالِيْ</b><br>
+            <i>Ismak Ya Gholi</i><br><br>
+
+            <b>دَايْماً فِي بَالِيْ</b><br>
+            <i>Daiman Fi Bali</i><br><br>
+
+            <b>مِنْ شَوْقِيْ لَكْ يَا جَمِيلْ</b><br>
+            <i>Min Syauqilak Ya Jamil</i><br>
+
+        </div>
+    </div>
+
+</body>
+</html>

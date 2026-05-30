@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Pembuat - Al-Fatih Collection</title>
+    <!-- Library Font Awesome untuk memunculkan icon sosmed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* STYLING NAVBAR */
+        .navbar {
+            width: 100%;
+            background-color: #222;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-arrow {
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-arrow:hover {
+            background-color: #00ff99;
+            color: #222;
+        }
+
+        .brand-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: #00ff99;
+            font-weight: bold;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: #00ff99;
+            border: 2px solid #00ff99;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #00ff99;
+            color: #222;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+        }
+
+        /* STYLING AREA KONTEN TENTANG */
+        .content-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-card {
+            width: 100%;
+            background-color: #222;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border-top: 4px solid #00ff99;
+            text-align: center;
+        }
+
+        /* STYLING FOTO PROFIL BULAT */
+        .profile-img-container {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            border: 3px solid #00ff99; 
+            padding: 3px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border-radius: 50%;
+        }
+
+        .profile-name {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            font-size: 0.95rem;
+            color: #00ff99;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .profile-desc {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .profile-card hr {
+            border: 0;
+            border-top: 1px solid #333;
+            margin-bottom: 25px;
+        }
+
+        /* STYLING TOMBOL MEDIA SOSIAL */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-social {
+            padding: 10px 18px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #444;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-social:hover {
+            background-color: #00ff99 !important;
+            color: #222 !important;
+            border-color: #00ff99 !important;
+        }
+
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+            .brand-title {
+                font-size: 0.85rem;
+            }
+            .btn-login {
+                padding: 4px 14px;
+                font-size: 0.8rem;
+            }
+            .profile-card {
+                padding: 30px 20px;
+            }
+            .profile-img-container {
+                width: 95px;
+                height: 95px;
+            }
+            .profile-name {
+                font-size: 1.35rem;
+            }
+            .profile-desc {
+                font-size: 0.9rem;
+            }
+            .btn-social {
+                font-size: 0.85rem;
+                padding: 8px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <button onclick="history.back()" class="btn-arrow" title="Kembali">&#10094;</button>
+        </div>
+
+        <div class="brand-title">
+            Koleksi sholawat hadroh oleh <span>Al-Fatih</span>
+        </div>
+
+        <a href="login.html" class="btn-login">Login</a>
+    </nav>
+
+    <div class="content-container">
+        
+        <div class="profile-card">
+            <!-- Komponen Foto Profil Bulat -->
+            <div class="profile-img-container">
+                <img src="foto.jpg" alt="Foto Al-Fatih" class="profile-img">
+            </div>
+            
+            <div class="profile-name">Al-Fatih</div>
+            <div class="profile-role">Web Developer & Creator</div>
+            
+            <p class="profile-desc">
+                Selamat datang di platform digital saya. Website ini dibuat secara khusus untuk mendokumentasikan serta mempermudah pencarian koleksi teks lirik sholawat hadroh secara rapi, responsif, dan nyaman dibaca. Sebagai seorang yang antusias dalam dunia web development, saya merancang antarmuka ini dengan konsep minimalis agar performanya ringan saat diakses melalui perangkat apa pun.pembuat website ini masih bersekolah smp tepatnya di smp surya kencana bhakti dan masih mengaji di Makhtab deeniyat hijrah pembuat lahir di Bandung, tanggal 05 desember 2013.
+            </p>
+
+            <hr>
+
+            <!-- Bagian Tombol Media Sosial yang Sudah Diperbaiki -->
+            <div class="social-links">
+                <a href="index.html" class="btn-social">
+                    <i class="fas fa-home"></i> Beranda
+                </a>
+                <a href="https://wa.me/6281323663688" target="_blank" class="btn-social" style="border-color: #25D366; color: #25D366;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://youtube.com/@FasafaFarwa.ID-119" target="_blank" class="btn-social" style="border-color: #ff0000; color: #ff0000;">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="mailto:fathboys.99@gmail.com" class="btn-social">
+                    <i class="fas fa-envelope"></i> email
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

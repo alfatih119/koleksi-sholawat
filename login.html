@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Al-Fatih Collection</title>
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; /* Background gelap */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* STYLING TOP NAVIGATION */
+        .top-nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-arrow {
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-arrow:hover {
+            background-color: #00ff99;
+            color: #222;
+        }
+
+        /* CONTAINER FORM */
+        .auth-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #222; /* Card box agak terang */
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border-top: 4px solid #00ff99; /* Aksen hijau neon */
+            text-align: center;
+        }
+
+        .auth-logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-logo span {
+            color: #00ff99;
+        }
+
+        .auth-subtitle {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        /* STYLING INPUT GROUP */
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #2a2a2a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #00ff99;
+            box-shadow: 0 0 8px rgba(0, 255, 153, 0.2);
+        }
+
+        /* BUTTON SUBMIT */
+        .btn-auth-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #00ff99;
+            color: #222;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-auth-submit:hover {
+            background-color: #00cc7a;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
+        }
+
+        /* SWITCH PAGE LINK */
+        .auth-switch {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .auth-switch a {
+            color: #00ff99;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .auth-switch a:hover {
+            color: #00cc7a;
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE SUB-STYLE */
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 30px 20px;
+            }
+            .top-nav {
+                top: 15px;
+                left: 15px;
+            }
+            .btn-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol navigasi kembali -->
+    <div class="top-nav">
+        <button onclick="history.back()" class="btn-arrow" title="Kembali">&#10094;</button>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-logo">Koleksi <span>Al-Fatih</span></div>
+        <div class="auth-subtitle">Silakan login untuk masuk ke akunmu</div>
+
+        <!-- Form Login Struktural Sederhana -->
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="username">Username atau Email</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+            </div>
+
+            <button type="submit" class="btn-auth-submit">Masuk Sekarang</button>
+        </form>
+        <!-- Taruh script ini di bawah form login -->
+        <script>
+            const loginForm = document.querySelector('form');
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Mencegah halaman reload langsung
+                
+                // Di sini kamu bisa menambahkan validasi username & password nanti
+                alert('Login berhasil! Selamat datang kembali.');
+                
+                // Mengalihkan langsung ke halaman utama/beranda (index.html)
+                window.location.href = 'index.html';
+            });
+        </script>
+        <div class="auth-switch">
+            Belum punya akun? <a href="signup.html">Daftar di sini</a>
+        </div>
+    </div>
+
+</body>
+</html>

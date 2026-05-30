@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lirik Waktu Sahar</title>
+    <style>
+        /* CSS RESET & BASE */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* STYLING NAVBAR (Sama persis dengan Halaman Utama) */
+        .navbar {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Navigasi Panah Kiri */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-arrow {
+            background-color: #333;
+            color: #ffffff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-arrow:hover {
+            background-color: #00ff99;
+            color: #1a1a1a;
+        }
+
+        /* Navigasi Tengah */
+        .nav-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2px;
+        }
+
+        .brand-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: #00ff99;
+            font-weight: bold;
+        }
+
+        .btn-about {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-about:hover {
+            color: #00ff99;
+        }
+
+        /* Navigasi Kanan (Tombol Login) */
+        .btn-login {
+            background-color: transparent;
+            color: #00ff99;
+            border: 2px solid #00ff99;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #00ff99;
+            color: #1a1a1a;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+        }
+
+        /* STYLING AREA KONTEN LIRIK */
+        .content-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px 20px 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 5px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .sub-title {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Wadah Teks Lirik */
+        .lirik-box {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #00ff99; /* Garis hiasan hijau di atas kotak lirik */
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .lirik-box b {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .lirik-box i {
+            font-size: 1rem;
+            color: #555;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .lirik-box hr {
+            width: 40%;
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px auto;
+        }
+
+        .info-ulang {
+            color: #888;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* Responsif HP */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+            .brand-title {
+                font-size: 0.8rem;
+            }
+            .btn-about {
+                font-size: 0.7rem;
+            }
+            .btn-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            .btn-login {
+                padding: 4px 12px;
+                font-size: 0.8rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .lirik-box b {
+                font-size: 1.15rem;
+            }
+            .lirik-box i {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR (Sama persis dengan halaman utama) -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <button onclick="history.back()" class="btn-arrow" title="Kembali">&#10094;</button>
+            <button onclick="history.forward()" class="btn-arrow" title="Maju">&#10095;</button>
+        </div>
+
+        <div class="nav-center">
+            <div class="brand-title">
+                Koleksi shalawat oleh <span>alfatih</span>
+            </div>
+            <a href="index.html#tentang" class="btn-about">Tentang Pembuat</a>
+        </div>
+
+        <a href="login.html" class="btn-login">Login</a>
+    </nav>
+
+    <!-- KONTEN UTAMA LIRIK -->
+    <div class="content-container">
+        
+        <h1>Waktu Sahar</h1>
+        <div class="sub-title">Fi Waqtis-Sahar</div>
+
+        <div class="lirik-box">
+
+            <b>وَقْتُ السَّحَرْ بِهْ يَطِيْبْ</b><br>
+            <i>Waqtus-sahar bih yathîb</i><br><br>
+
+            <b>اَلْحَالُ لِأَهْلِ الصَّفَا</b><br>
+            <i>Al-hâlu li ahli-shofâ</i><br><br>
+
+            <b>وَبِهِ يَجُوْدُ الْعَلِيْ</b><br>
+            <i>Wa bihî yajûdul ‘Alî</i><br><br>
+
+            <b>بِالْفَضْلِ لِأَهْلِ الْوَفَا</b><br>
+            <i>Bil fadhli li ahlil wafâ</i><br>
+            <span class="info-ulang">(Ulang 3x)</span>
+
+            <hr>
+
+            <b>Telah lahir cahaya</b><br>
+            <i>Telah lahir cahaya</i><br><br>
+
+            <b>Penerang jiwa</b><br>
+            <i>Penerang jiwa</i><br><br>
+
+            <b>Manusia mulia</b><br>
+            <i>Manusia mulia</i><br><br>
+
+            <b>Penyejuk jiwa</b><br>
+            <i>Penyejuk jiwa</i><br>
+            <span class="info-ulang">(Ulang 2x)</span>
+
+            <hr>
+
+            <b>Burung—burung bernyanyi</b><br>
+            <i>Burung—burung bernyanyi</i><br><br>
+
+            <b>Matahari berseri</b><br>
+            <i>Matahari berseri</i><br><br>
+
+            <b>Datang pujaan hati</b><br>
+            <i>Datang pujaan hati</i><br><br>
+
+            <b>Sebagai obat diri</b><br>
+            <i>Sebagai obat diri</i><br>
+
+            <hr>
+
+            <b>وَقْتُ السَّحَرْ بِهْ يَطِيْبْ</b><br>
+            <i>Waqtus-sahar bih yathîb</i><br><br>
+
+            <b>اَلْحَالُ لِأَهْلِ الصَّفَا</b><br>
+            <i>Al-hâlu li ahli-shofâ</i><br><br>
+
+            <b>وَبِهِ يَجُوْدُ الْعَلِيْ</b><br>
+            <i>Wa bihî yajûdul ‘Alî</i><br><br>
+
+            <b>بِالْفَضْلِ لِأَهْلِ الْوَفَا</b><br>
+            <i>Bil fadhli li ahlil wafâ</i><br>
+
+            <hr>
+
+            <b>Malaikat memuji</b><br>
+            <i>Malaikat memuji</i><br><br>
+
+            <b>Bidadari berseri</b><br>
+            <i>Bidadari berseri</i><br><br>
+
+            <b>Menyambut sang Nabi</b><br>
+            <i>Menyambut sang Nabi</i><br><br>
+
+            <b>Dari Allahu Rabbi</b><br>
+            <i>Dari Allahu Rabbi</i><br>
+
+            <hr>
+
+            <b>Hancurlah berhala</b><br>
+            <i>Hancurlah berhala</i><br><br>
+
+            <b>Terkunci neraka</b><br>
+            <i>Terkunci neraka</i><br><br>
+
+            <b>Sambutan Yang Esa</b><br>
+            <i>Sambutan Yang Esa</i><br><br>
+
+            <b>Untuk umat manusia</b><br>
+            <i>Untuk umat manusia</i><br>
+
+            <hr>
+
+            <b>وَقْتُ السَّحَرْ بِهْ يَطِيْبْ</b><br>
+            <i>Waqtus-sahar bih yathîb</i><br><br>
+
+            <b>اَلْحَالُ لِأَهْلِ الصَّفَا</b><br>
+            <i>Al-hâlu li ahli-shofâ</i><br><br>
+
+            <b>وَبِهِ يَجُوْدُ الْعَلِيْ</b><br>
+            <i>Wa bihî yajûdul ‘Alî</i><br><br>
+
+            <b>بِالْفَضْلِ لِأَهْلِ الْوَفَا</b><br>
+            <i>Bil fadhli li ahlil wafâ</i><br>
+
+            <hr>
+
+            <b>Lahir dalam bersujud pada Allah yang wujud</b><br>
+            <i>Lahir dalam bersujud pada Allah yang wujud</i><br><br>
+
+            <b>Untuk nabi maulud dari Allah yang maujud</b><br>
+            <i>Untuk nabi maulud dari Allah yang maujud</i><br><br>
+
+            <b>Sungguh besar terasa bagi umat manusia</b><br>
+            <i>Sungguh besar terasa bagi umat manusia</i><br><br>
+
+            <b>Ada nabi yang mulia dari allah ta`ala</b><br>
+            <i>Ada nabi yang mulia dari allah ta`ala</i><br>
+
+            <hr>
+
+            <b>Salam-salam padamu dari tempat yang jauh</b><br>
+            <i>Salam-salam padamu dari tempat yang jauh</i><br><br>
+
+            <b>Untuk cinta yang utuh semua karena rindu</b><br>
+            <i>Untuk cinta yang utuh semua karena rindu</i><br><br>
+
+            <b>Alhamdulillahi wakafa `alan nabi mustofa</b><br>
+            <i>Alhamdulillahi wakafa `alan nabi mustofa</i><br><br>
+
+            <b>Alhamdulillahi wakafa `alan nurul mustofa</b><br>
+            <i>Alhamdulillahi wakafa `alan nurul mustofa</i><br>
+
+            <hr>
+
+            <b>وَقْتُ السَّحَرْ بِهْ يَطِيْبْ</b><br>
+            <i>Waqtus-sahar bih yathîb</i><br><br>
+
+            <b>اَلْحَالُ لِأَهْلِ الصَّفَا</b><br>
+            <i>Al-hâlu li ahli-shofâ</i><br><br>
+
+            <b>وَبِهِ يَجُوْدُ الْعَلِيْ</b><br>
+            <i>Wa bihî yajûdul ‘Alî</i><br><br>
+
+            <b>بِالْفَضْلِ لِأَهْلِ الْوَفَا</b><br>
+            <i>Bil fadhli li ahlil wafâ</i><br>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
